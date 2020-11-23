@@ -4,6 +4,6 @@ setup(
     name='c4-achitecture',
     version='0.1dev',
     packages=['graphviz',],
-    license='Creative Commons Attribution-Noncommercial-Share Alike license',
+    license='MIT',
     long_description=open('README.md').read(),
 )
