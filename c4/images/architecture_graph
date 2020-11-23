@@ -1,0 +1,68 @@
+digraph {
+	node [fontsize=6 shape=record]
+	edge [fontsize=6 labelfontsize=6]
+	compound=true dpi=400
+	"Internal users
+
+Employees in the organisation."
+	"Internal users
+
+Employees in the organisation." -> "DWH application
+
+System running data pipelines (integrating, consolidating and transforming data)." [label="Makes requests"]
+	"DWH application
+
+System running data pipelines (integrating, consolidating and transforming data)."
+	"DWH
+
+DWH." -> "Pipelines
+
+ETL (Extract, transform, load) pipelines."
+	"DWH
+
+DWH." -> "Scheduler
+
+Scheduling ETL jobs."
+	subgraph cluster_DWH {
+		node [style=filled]
+		color=blue
+		"Pipelines
+
+ETL (Extract, transform, load) pipelines."
+		"Scheduler
+
+Scheduling ETL jobs."
+		label=DWH
+	}
+	subgraph cluster_PostgreSQL {
+		node [style=filled]
+		color=blue
+		label=PostgreSQL
+	}
+	"DWH application
+
+System running data pipelines (integrating, consolidating and transforming data)." -> "Metabase dashboards
+
+Frontend BI application." [label="Copies data to"]
+	subgraph "cluster_DWH application" {
+		node [style=filled]
+		color=lightgrey label="DWH application" style=filled
+		"DWH application
+
+System running data pipelines (integrating, consolidating and transforming data)." -> "DWH
+
+DWH."
+		"DWH application
+
+System running data pipelines (integrating, consolidating and transforming data)." -> "PostgreSQL
+
+Database storing the data for ETL jobs."
+	}
+	"Metabase dashboards
+
+Frontend BI application."
+	subgraph "cluster_Metabase dashboards" {
+		node [style=filled]
+		color=lightgrey label="Metabase dashboards" style=filled
+	}
+}
