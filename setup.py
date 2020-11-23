@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='c4-achitecture',
-    version='0.1dev',
+    version='0.1',
     install_requires=[
         'graphviz'
     ],

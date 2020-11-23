@@ -1,15 +1,12 @@
-import os
 import graphviz
 import pathlib
-
-from c4.architectures.dwh import dwh
 
 
 def _content(element):
     return f'{element.name}\n\n{element.description}'
 
 
-def c4_graph(context):
+def c4_graph(context, format='png', filename='architecture_graph', directory=pathlib.Path('architectures/')):
     attr = {'node_attr': {'shape': 'record',
                           'fontsize': '6'},
             'edge_attr': {'fontsize': '6',
@@ -39,7 +36,4 @@ def c4_graph(context):
             for usage in system.usages:
                 graph.edge(_content(system), _content(usage.target), label=usage.description)
 
-    graph.render(format='png', filename='architecture_graph', directory=pathlib.Path('c4/images/'))
-
-
-c4_graph(dwh)
+    graph.render(format=format, filename=filename, directory=directory)
