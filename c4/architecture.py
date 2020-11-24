@@ -25,12 +25,13 @@ class Context():
 
 
 class System():
-    def __init__(self, name, description):
+    def __init__(self, name, description, internal=True):
         self.name = name
         self.description = description
         self.containers = []
         self.relationships = []
         self.type = Type.SYSTEM
+        self.internal = internal
 
     def add_container(self, container: 'Container'):
         self.containers.append(container)

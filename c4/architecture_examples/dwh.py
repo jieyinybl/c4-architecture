@@ -16,7 +16,8 @@ dwh_app = System(
 
 metabase = System(
     name='Metabase dashboards',
-    description='Frontend BI application.')
+    description='Frontend BI application.',
+    internal=False)
 
 dwh.add_system(dwh_app)
 dwh.add_system(metabase)

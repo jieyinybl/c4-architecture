@@ -34,7 +34,8 @@ def c4_graph(context, format='png', filename='architecture_graph', directory=pat
         for relationship in person.relationships:
             graph.edge(_content_node(person), _content_node(relationship.target), label=_content_relationship(relationship))
     for system in context.systems:
-        graph.node(name=_content_node(system), fillcolor='#1168BD')
+        color_system = '#1168BD' if system.internal else '#999999'
+        graph.node(name=_content_node(system), fillcolor=color_system)
         for relationship in system.relationships:
             graph.edge(_content_node(system), _content_node(relationship.target), label=_content_relationship(relationship))
         with graph.subgraph(name=f'cluster_{system.name}') as c_system:
