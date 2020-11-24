@@ -1,0 +1,76 @@
+digraph {
+	graph [fontsize=6]
+	node [fontcolor=white fontsize=6 shape=box style=filled]
+	edge [fontsize=6 labelfontsize=6]
+	compound=true dpi=400
+	"External users
+[Person]
+
+Visitors of the online shop." [fillcolor="#08427B"]
+	"External users
+[Person]
+
+Visitors of the online shop." -> "Shop backend
+[Software System]
+
+The php backend system of the online shop." [label="Makes requests
+[HTTPS]"]
+	"Shop backend
+[Software System]
+
+The php backend system of the online shop." [fillcolor="#1168BD"]
+	"Shop backend
+[Software System]
+
+The php backend system of the online shop." -> "External system
+[Software System]
+
+A example external system" [label="Uses
+[API]"]
+	"Shop backend
+[Software System]
+
+The php backend system of the online shop." -> "Customer management
+[Container]
+
+Management of clients." [lhead="cluster_Shop backend"]
+	subgraph "cluster_Customer management" {
+		label="Customer management [Container]" style=dotted
+	}
+	"Product management
+[Container]
+
+Management of products and catalogs." -> "Product content
+[Component]
+
+Management of product content, e.g. image, price." [lhead="cluster_Product management"]
+	subgraph "cluster_Product management" {
+		label="Product management [Container]" style=dotted
+		"Product content
+[Component]
+
+Management of product content, e.g. image, price." [fillcolor="#85BBF0" style=filled]
+		"Product inventory
+[Component]
+
+Management of stocks and logistic of products." [fillcolor="#85BBF0" style=filled]
+	}
+	subgraph "cluster_Backend database" {
+		label="Backend database [Container]" style=dotted
+	}
+	subgraph "cluster_Shop backend" {
+		label="Shop backend [Software System]" style=dotted
+		"Customer management
+[Container]
+
+Management of clients." [fillcolor="#438DD5" style=filled]
+		"Product management
+[Container]
+
+Management of products and catalogs." [fillcolor="#438DD5" style=filled]
+		"Backend database
+[Container]
+
+Postgres database storing products and customer data." [fillcolor="#438DD5" style=filled]
+	}
+}
