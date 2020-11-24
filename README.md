@@ -5,8 +5,8 @@
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [How to start](#how-to-start)
+- [Defining context, containers, components, relationships](#defining-context--containers--components--relationships)
 - [Usage](#usage)
-  * [Document architecture in code](#document-architecture-in-code)
   * [Generate architecture diagram](#generate-architecture-diagram)
 
 
@@ -45,23 +45,12 @@ source .venv/bin/activate
 ```
 
 
+## Defining context, containers, components, relationships
+
+
+
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-### Document architecture in code
-
-* Sed blandit tortor eu eleifend facilisis.
-
-```
-cmd
-```
-
-* Proin tristique arcu non rutrum dapibus.
-
-```
-cmd
-```
-
 
 ### Generate architecture diagram
 
