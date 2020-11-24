@@ -49,7 +49,7 @@ source .venv/bin/activate
 
 Let's consider a simple example of describing the backend system of an online shop.
 
-
+![Example](c4/architecture_examples/onlineshop.png)
 
 **1. Level: Context**
 
