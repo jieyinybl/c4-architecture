@@ -21,31 +21,44 @@ metabase = System(
 dwh.add_system(dwh_app)
 dwh.add_system(metabase)
 
-dwh_container = Container(
-    name='DWH',
-    description='DWH.')
-
-postgres = Container(
-    name='PostgreSQL',
-    description='Database storing the data for ETL jobs.')
-
-dwh_app.add_container(dwh_container)
-dwh_app.add_container(postgres)
-
-pipelines = Component(
-    name='Pipelines',
+pipelines = Container(
+    name='Data pipelines',
     description='ETL (Extract, transform, load) pipelines.')
 
-scheduler = Component(
+etl_db = Container(
+    name='ETL database',
+    description='Postgres database storing the data for ETL jobs.')
+
+scheduler = Container(
     name='Scheduler',
-    description='Scheduling ETL jobs.')
+    description='Jenkins service to schedule the run of pipelines.')
 
-dwh_container.add_component(pipelines)
-dwh_container.add_component(scheduler)
+dwh_app.add_container(pipelines)
+dwh_app.add_container(etl_db)
+dwh_app.add_container(scheduler)
 
+frontend_db = Container(
+    name='Frontend database',
+    description='Postgres database storing report ready data.')
 
-internal_user.add_usage(dwh_app, 'Makes requests')
-dwh_app.add_usage(metabase, 'Copies data to')
-#system2.add_usage(invoice_extractor_application, 'Updates records')
-#ocr.add_usage(model, 'Sends OCR output in XML')
-#
+metabase.add_container(frontend_db)
+
+schema_management = Component(
+    name='Schema management',
+    description='Definition of schema and metabase in DWH.')
+
+artifacts_generation = Component(
+    name='Generation of artifacts',
+    description='Automatic generation of artifacts in the ETL pipeline.')
+
+pipelines.add_component(schema_management)
+pipelines.add_component(artifacts_generation)
+
+internal_user.add_relationship(dwh_app, 'Makes requests', 'HTTPS')
+etl_db.add_relationship(frontend_db, 'Copies data to', 'JDBC')
+scheduler.add_relationship(pipelines, 'Triggers')
+pipelines.add_relationship(etl_db, 'Writes to')
+
+from c4.graph import c4_graph
+
+c4_graph(dwh)
