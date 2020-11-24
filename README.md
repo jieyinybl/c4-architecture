@@ -2,66 +2,38 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Architecture](#architecture)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Configuration](#configuration)
 - [How to start](#how-to-start)
+- [Defining context, containers, components, relationships](#defining-context--containers--components--relationships)
 - [Usage](#usage)
-  * [Running prediction service locally](#running-prediction-service-locally)
-  * [Training model](#training-model)
-  * [Other usages](#other-usages)
+  * [Generate architecture diagram](#generate-architecture-diagram)
 
 
 
 <!-- INTRODUCTION -->
 ## Introduction
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. :
+This package allows you to document your software architecture in C4 model. Key features include:
 
--
--
-- 
-
-## Architecture
-
-![Architecture](c4/images/architecture_graph.png)
+- Documentation of architecture in code
+- Generation of architecture diagram
 
 <!-- REQUIREMENTS -->
 ## Requirements
 
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-- Praesent suscipit dolor congue justo feugiat, et consectetur nulla varius.
-- Phasellus a libero sagittis, imperdiet felis ac, imperdiet justo.
+- python >= 3.0
+- pyvenv
 
 <!-- INSTALLATION -->
 ## Installation
 
 
-* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+* Git clone this repository and run make
 
 ```
-cmd
+make
 ```
-
-* Praesent suscipit dolor congue justo feugiat, et consectetur nulla varius.
-
-```
-cmd
-```
-
-<!-- CONFIGURATION -->
-## Configuration
-
-```
-cmd
-```
-
-Configurable parameters:
-
-*
-*
-*
 
 <!-- HOW TO START -->
 ## How to start
@@ -69,58 +41,25 @@ Configurable parameters:
 To start the service, use:
 
 ```
-cmd
+source .venv/bin/activate
 ```
 
-Stopping the service with:
 
-```
-cmd
-```
-
-If the service crashes, 
-
-```
-cmd
-```
+## Defining context, containers, components, relationships
 
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-### Running prediction service locally
+### Generate architecture diagram
 
-* Sed blandit tortor eu eleifend facilisis.
-
-```
-cmd
-```
-
-* Proin tristique arcu non rutrum dapibus.
+Generating the architecture diagram from e.g. dwh.py with:
 
 ```
-cmd
+python3 architectures/dwh.py
 ```
 
-
-### Training model
-
-* Proin pretium nunc lobortis volutpat sagittis.
-
-```
-cmd
-```
-
-* Aenean et nisi sed massa pellentesque tristique.
-
-```
-cmd
-```
-
-### Other usages
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et facilisis tellus, et pretium nibh. Vivamus condimentum mauris nec lacus gravida, quis feugiat augue consequat. Aenean nec libero et risus facilisis blandit id nec arcu. Donec eget augue quam. Proin ullamcorper sodales lectus et consectetur. Nulla non nunc elit. In condimentum suscipit volutpat. Praesent non ullamcorper lectus. Nulla non varius lorem, elementum pulvinar mi. Duis at mi elementum, ultricies tortor quis, elementum mauris.
 
 
 
